@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ page.title }}</title>
+        <link rel="stylesheet" href="/assets/css/styles.css">
+    </head>
+    <body>
+        <main>
+        <header>
+            Header
+        </header>
+        <aside>
+            {% include navigation.html %}
+        </aside>
+        <article>
+            {{ content }}
+        </article>
+        <footer>
+            &copy; to me
+        </footer>
+        </main>
+    </body>
+</html>

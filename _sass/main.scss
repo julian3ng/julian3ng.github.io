@@ -1,0 +1,47 @@
+html, body {
+    margin: 10px;
+    height: 100%;
+}
+
+body {
+    background: #282828;
+    color: #3bdbb2;
+}
+
+main {
+    font-family: monospace, monospace;
+    max-width: 38rem;
+    padding: 2rem;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: "head head head head"
+                             "side main main main"
+                             "foot foot foot foot";
+    grid-gap: 10px;    
+}
+
+header {
+    background: red;
+    grid-area: head;
+}
+
+aside {
+    background: blue;
+    grid-area: side;
+}
+
+article {
+    background: green;
+    grid-area: main;
+}
+
+footer {
+    background: yellow;
+    grid-area: foot;
+}
+
+.current {
+    color: green;
+}
