@@ -7,18 +7,18 @@
     </head>
     <body>
         <main>
-        <header>
-            Header
-        </header>
-        <aside>
-            {% include navigation.html %}
-        </aside>
-        <article>
-            {{ content }}
-        </article>
-        <footer>
-            &copy; to me
-        </footer>
+            <header>
+                <a id="title-link" href="/">
+                    <h1 id="title">Julian</h1>
+                </a>
+                {% include navigation.html %}
+            </header>
+            <article>
+                {{ content }}
+            </article>
+            <footer>
+                &copy; to me
+            </footer>
         </main>
     </body>
 </html>

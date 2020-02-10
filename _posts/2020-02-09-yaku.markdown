@@ -1,0 +1,72 @@
+---
+layout: post
+title: "Yaku"
+date: 2020-02-09
+categories: [ mahjong ]
+---
+
+### 1 Han Closed
+- Tsumo (self-draw to win)
+- Riichi (declare tenpai)
+- Ippatsu (win in first round after riichi declaration)
+- Pinfu (all sequences + pair, ryanmen wait)
+- Iipeikou (2 identical sequences)
+
+### 1 Han
+- Haitei (last draw)
+- Houtei (last discard)
+- Rinshan Kaihou (kan draw)
+- Chankan (ron on someone else's kan)
+- Tanyao (all simples)
+- Yakuhai (pon/kan of dragons or seat/round winds)
+
+### 2 Han Closed
+- Double Riichi (riichi on turn 1)
+- Chiitoitsu (7 pairs, closed only)
+
+### 2 Han Closed, 1 Han Open
+- Chantaiyao (all groups have a terminal/honor) (-1 open)
+- Sanshoku Doujun (three chi, three suits, same numbers) (-1 open)
+- Ittsu (1-9 same suit) (-1 open)
+
+### 2 Han
+- Toitoi (All pons/kans)
+- Sanankou (3 closed pons/kans, 1 open group)
+- Sanshoku Doukou (three pon, same number)
+- Sankantsu (3 kans)
+- Honroutou (All terminals and honors, counts as 4 because of toitoi/chiitoitsu)
+- Shousangen (2 dragon pon/kan, 1 dragon pair, counts as 4 because of yakuhai)
+
+### 3 Han Closed
+- Ryanpeikou (Double iipeikou, doesn't overlap with chiitoitsu)
+
+### 3 Han, 2 Han Open
+- Honitsu (Flush with honor tiles)
+- Junchan Taiyao (all sets have one terminal)
+
+### 6 Han, 5 Han Open
+- Chinitsu (Flush)
+
+### Yakuman Closed
+- Kokushi Musou (13 orphans)
+- Suuankou (4 closed pon - must tsumo to complete pons)
+- Chuuren Poutou (True Nine Gates)
+- Tenhou (Dealer, first draw win)
+- Chiihou (Non-dealer, first draw win)
+- Nagashi Mangan (Draw, discarded terminals and honors only, no calls made on you)
+
+### Yakuman
+- Kazoe Yakuman (>13 han in normal hand)
+- Daisangen (3 dragon pon/kan)
+- Shousuushii (3 wind pon/kan + 1 wind pair)
+- Daisuushii (4 wind pon/kan)
+- Tsuuiisou (All honors)
+- Chinroutou (All terminals)
+- Ryuuiisou (All greens)
+- Suukantsu (4 kans)
+
+
+---
+
+## References
+- [Arcteus](http://arcturus.su/wiki)

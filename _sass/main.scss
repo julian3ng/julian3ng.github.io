@@ -3,45 +3,86 @@ html, body {
     height: 100%;
 }
 
+$background-color: #282828;
+
+$color-a: #3bdbb2;
+$color-b: #00c5c4;
+$color-c: #00accc;
+$color-d: #0091c7;
+$color-e: #3575b3;
+$color-f: #594893;
+
+$text-color: #99b0a8;  //#364B44;
+$link-color: $color-b;
+$line-color: #4c5854;
+$debug-color: #ff00ff;
+
+
 body {
-    background: #282828;
-    color: #3bdbb2;
+    background: $background-color;
+    color: $text-color;
 }
 
 main {
     font-family: monospace, monospace;
-    max-width: 38rem;
+    max-width: 75rem;
     padding: 2rem;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 50px 1fr 50px;
-    grid-template-areas: "head head head head"
-                             "side main main main"
-                             "foot foot foot foot";
+    grid-template-areas: "head head head head head"
+                         ".    main main main ."
+                         "foot foot foot foot .";
     grid-gap: 10px;    
 }
 
-header {
-    background: red;
-    grid-area: head;
+hr {
+    color: $line-color;
 }
 
-aside {
-    background: blue;
-    grid-area: side;
+header {
+    grid-area: head;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: "name nav nav nav .";
+    border-bottom: 1px solid $line-color;
+    align-items: end;
+}
+
+#title-link {
+    grid-area: name;
+    justify-self: center;
+}
+
+#title {
+    margin: 0px;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+}
+nav {
+    grid-area: nav;
+    position: relative;
+}
+
+#navigation {
+    position: absolute;
+    bottom: 0px;
 }
 
 article {
-    background: green;
     grid-area: main;
+    line-height: 1.5rem;
 }
 
 footer {
-    background: yellow;
     grid-area: foot;
 }
 
 .current {
-    color: green;
+    font-weight: bold;
 }
