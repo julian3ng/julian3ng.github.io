@@ -1,0 +1,117 @@
+---
+layout: post
+title: ecs
+date: 2020-02-09
+categories: [ cs, lisp ]
+---
+
+This is an overview of my entity component system (ECS) written in Common Lisp.
+
+As a high level overview, an ECS is a database table of game
+data. Columns are types of data -- health, attack, defense, color,
+sprite, etc. -- and rows are entities which have that data.
+
+--- 
+
+I'm using a generational index (which I confusingly named a
+generational map) to store components (database columns). This lets me
+insert and remove components which not worrying about getting garbage
+data if using an old index. 
+
+{% highlight lisp %}
+(defpackage :gmap
+  (:use :cl)
+  (:shadow :delete
+           :elt
+           :length
+           :string)
+  (:export :gix
+           :gmap
+           :insert
+           :delete
+           :elt
+           :do-values
+           :string))
+           
+(in-package :gmap)
+{% endhighlight %}
+
+Here I'm shadowing `delete`, `elt`, `length`, and `string` so I don't
+have to disambiguate them in this package while writing said routines.
+
+{% highlight lisp %}
+(defstruct gix
+  (ix (error ":ix not supplied"))
+  (gen (error ":gen not supplied")))
+
+(defstruct entry)
+(defstruct (free-entry (:include entry))
+  (next (error ":next-free not supplied")))
+(defstruct (used-entry (:include entry))
+  (value (error ":value not supplied"))
+  (generation (error ":generation not supplied")))
+{% endhighlight %}
+
+The `free-entry` stores a pointer to the next free entry, while the
+`used-entry` has both a value and a generation.  The generation is the
+key to not allowing use after "free", so to speak.
+
+
+{% highlight lisp %}
+(defparameter *default-gmap-size* 16)
+
+(defclass gmap ()
+  ((entries :accessor entries
+            :initform (make-array *default-gmap-size*
+                                  :adjustable t
+                                  :element-type 'entry
+                                  :fill-pointer 0)
+            :documentation "Entries for the generational map.")
+   (length :accessor length
+           :initform 0)
+   (generation :initform 0)
+   (next-free :initform 0)))
+
+
+(defmethod initialize-instance :after ((instance gmap) &key)
+  (with-slots (entries) instance
+    (dotimes (i (1- *default-gmap-size*))
+      (vector-push-extend (make-free-entry :next (1+ i)) entries))
+    (vector-push-extend (make-free-entry :next nil) entries)))
+{% endhighlight %}
+
+We'll start with a size of 16. A `gmap` has a backing array of
+entries, a length that we'll keep udpated, a current generation, and
+the head of the free list.
+
+On initialization, we set all entries to free and connect their pointers.
+
+{% highlight lisp %}
+(defmethod insert ((g gmap) value)
+  (with-slots (entries next-free generation length) g
+      (let ((new-entry (make-used-entry :value value :generation generation)))
+        (if (null next-free)
+            (let ((ix (make-gix :ix (cl:length entries) :gen generation)))
+              (vector-push-extend new-entry entries)
+              ix)
+            (let ((ix (make-gix :ix next-free :gen generation))
+                  (old-entry (cl:elt entries next-free)))
+              (if (free-entry-p old-entry)
+                  (progn (setf (cl:elt entries next-free) new-entry)
+                         (setf next-free (free-entry-next old-entry))
+                         (incf length)
+                         ix)
+                  (error "Free list corrupted")))))))
+{% endhighlight %}
+
+Lots going on here.
+-- 
+
+
+
+---
+
+## References
+
+- [gamedev.net](https://www.gamedev.net/articles/programming/general-and-gameplay-programming/understanding-component-entity-systems-r3013/)
+- [Catherine West's ECS talk](https://kyren.github.io/2018/09/14/rustconf-talk.html)

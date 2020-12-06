@@ -3,6 +3,7 @@ layout: post
 title: "Yaku"
 date: 2020-02-09
 categories: [ mahjong ]
+hidden: true
 ---
 
 ### 1 Han Closed
