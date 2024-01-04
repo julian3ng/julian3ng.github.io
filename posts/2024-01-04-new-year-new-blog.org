@@ -1,0 +1,39 @@
+#+title: New Year New Blog
+#+date: <2024-01-04 15:26>
+#+description:
+#+filetags: :meta:
+
+* Motivation
+  For a couple of years, I've been going back and forth on making a blog. I
+  decided to make 2024 the year I actually publish something -- I hope to have at
+  least a little to write about this year. My intention for this blog is to log my
+  progress in some long-term projects that started their lives as new year's
+  resolutions, and to be able to look back later and see how far I've come.
+
+
+  Such projects include:
+  - Game dev
+    - Do some Godot tutorials
+  - Calisthenics
+    - Handstand
+      - Handstand press
+    - Muscle up
+    - Pistol squat
+  - Pixel art
+  - Climbing
+    - Do a V7
+  - Korean
+    - Finishing _Integrated Korean_ (book 1)
+
+  Also, having a blog will give me somewhere to exercise my atrophied writing chops and
+  tinker with web design.
+* Technology
+  This blog is made with:
+  - [[https://github.com/bastibe/org-static-blog][org-static-blog]]
+  - Github Pages
+
+
+  And that's it! I didn't want to play around with anything beefier or I'd end
+  up trying to arrange everything *just so* and never write anything.
+  ~org-static-blog~ lets me generate the blog through some Emacs commands, and I
+  can just push it to Github and not think too hard.
